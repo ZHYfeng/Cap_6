@@ -70,6 +70,7 @@ namespace klee {
 			void handleExternalFunction(ExecutionState& state, KInstruction *ki);
 			void analyzeInputValue(uint64_t& address, ObjectPair& op, llvm::Type* type);
 			unsigned getLoadTime(uint64_t address);
+			unsigned getLoadTimeForTaint(uint64_t address);
 			unsigned getStoreTime(uint64_t address);
 			unsigned getStoreTimeForTaint(uint64_t address);
 			llvm::Function* getPointeredFunction(ExecutionState& state, KInstruction* ki);
