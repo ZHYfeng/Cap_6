@@ -280,6 +280,33 @@ namespace klee {
 							item->name = varName;
 						}
 					}
+				} else if (f->getName() == "send_Data") {
+					ref<Expr> address = executor->eval(ki, 1, state).value;
+					ConstantExpr* realAddress = dyn_cast<ConstantExpr>(address);
+					if (realAddress) {
+						uint64_t key = realAddress->getZExtValue();
+						ObjectPair op;
+						bool success = executor->getMemoryObject(op, state, state.currentStack->addressSpace, address);
+						if (success) {
+							const MemoryObject *mo = op.first;
+							if (executor->isGlobalMO(mo)) {
+								item->isGlobal = true;
+							}
+							string varName = createVarName(mo->id, key, item->isGlobal);
+							string varFullName;
+							if (item->isGlobal) {
+								unsigned Load_Time = getLoadTimeForTaint(key);
+								if (Load_Time == 0) {
+									varFullName = varName + "_Init_tag";
+								} else {
+									varFullName = createGlobalVarFullName(varName, Load_Time, False);
+								}
+							}
+							item->globalName = varFullName;
+							item->name = varName;
+							trace->Send_Data_Expr.insert(currentEvent->globalName);
+						}
+					}
 				} else if (kmodule->internalFunctions.find(f) != kmodule->internalFunctions.end()) {
 					item->eventType = Event::IGNORE;
 				}
@@ -851,6 +878,17 @@ namespace klee {
 		} else {
 			loadTime = index->second + 1;
 			loadRecord[address] = loadTime;
+		}
+		return loadTime;
+	}
+
+	unsigned PSOListener::getLoadTimeForTaint(uint64_t address) {
+		unsigned loadTime;
+		map<uint64_t, unsigned>::iterator index = loadRecord.find(address);
+		if (index == loadRecord.end()) {
+			loadTime = 0;
+		} else {
+			loadTime = index->second;
 		}
 		return loadTime;
 	}

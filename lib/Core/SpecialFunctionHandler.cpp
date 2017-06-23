@@ -146,6 +146,7 @@ static SpecialFunctionHandler::HandlerInfo handlerInfo[] = {
 		add("valloc", handleValloc, true),
 		//@hy
 		add("make_taint", handleMakeTaint, false),
+    add("send_Data", handleSendData, false),
 
 #undef addDNR
 #undef add  
@@ -887,5 +888,12 @@ void SpecialFunctionHandler::handleMakeTaint(ExecutionState &state,
 		KInstruction *target, std::vector<ref<Expr> > &arguments) {
 
 	assert( arguments.size() == 1 && "invalid number of arguments to klee_make_taint");
+	//doing nothing, and really do it at TaintListener.
+}
+
+void SpecialFunctionHandler::handleSendData(ExecutionState &state,
+		KInstruction *target, std::vector<ref<Expr> > &arguments) {
+
+	assert( arguments.size() == 1 && "invalid number of arguments to klee_send_data");
 	//doing nothing, and really do it at TaintListener.
 }

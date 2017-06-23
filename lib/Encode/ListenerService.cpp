@@ -582,8 +582,8 @@ namespace klee {
 		pushListener(PSOlistener);
 		BitcodeListener* Symboliclistener = new SymbolicListener(executor, &rdManager);
 		pushListener(Symboliclistener);
-//		BitcodeListener* Taintlistener = new TaintListener(executor, &rdManager);
-//		pushListener(Taintlistener);
+		BitcodeListener* Taintlistener = new TaintListener(executor, &rdManager);
+		pushListener(Taintlistener);
 
 		unsigned traceNum = executor->executionNum;
 		llvm::errs() << "\n";
@@ -608,7 +608,7 @@ namespace klee {
 		rdManager.printCurrentTrace(true);
 		//			encode.showInitTrace();//need to be modified
 #endif
-
+		unsigned traceNum = executor->executionNum;
 		if (executor->execStatus != Executor::SUCCESS) {
 			llvm::errs() << "######################执行有错误,放弃本次执行##############\n";
 			executor->isFinished = true;

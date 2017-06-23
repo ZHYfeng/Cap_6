@@ -72,6 +72,7 @@ namespace klee {
 			std::vector<Event*> brEvent;
 			std::vector<Event*> assertEvent;
 
+			std::set<std::string> Send_Data_Expr;
 			std::set<std::string> initTaintSymbolicExpr;
 			std::set<std::string> taintSymbolicExpr;
 			std::set<std::string> unTaintSymbolicExpr;

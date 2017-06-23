@@ -155,6 +155,7 @@ namespace klee {
     HANDLER(handleValloc);
     //@hy
     HANDLER(handleMakeTaint);
+    HANDLER(handleSendData);
 #undef HANDLER
   };
 } // End klee namespace
