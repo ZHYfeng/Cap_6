@@ -299,7 +299,7 @@ namespace klee {
 								if (Load_Time == 0) {
 									varFullName = varName + "_Init_tag";
 								} else {
-									varFullName = createGlobalVarFullName(varName, Load_Time, False);
+									varFullName = createGlobalVarFullName(varName, Load_Time, false);
 								}
 							}
 							item->globalName = varFullName;
