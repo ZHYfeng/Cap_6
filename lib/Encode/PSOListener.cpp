@@ -280,7 +280,7 @@ namespace klee {
 							item->name = varName;
 						}
 					}
-				} else if (f->getName() == "send_Data") {
+				} else if (f->getName() == "Send_Data") {
 					ref<Expr> address = executor->eval(ki, 1, state).value;
 					ConstantExpr* realAddress = dyn_cast<ConstantExpr>(address);
 					if (realAddress) {

@@ -146,7 +146,7 @@ static SpecialFunctionHandler::HandlerInfo handlerInfo[] = {
 		add("valloc", handleValloc, true),
 		//@hy
 		add("make_taint", handleMakeTaint, false),
-    add("send_Data", handleSendData, false),
+    add("Send_Data", handleSendData, false),
 
 #undef addDNR
 #undef add  
