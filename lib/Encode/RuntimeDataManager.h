@@ -75,6 +75,13 @@ class RuntimeDataManager {
 		std::set<std::string> allDTAMhybridMap;
 		std::set<std::string> allTaintMap;
 
+		//add by haoyu 2017.07.03
+		std::vector<unsigned> Send_Data;
+		std::vector<unsigned> Send_Data_Serial;
+		std::vector<unsigned> Send_Data_Parallel;
+		std::vector<unsigned> Send_Data_Hybrid;
+		std::vector<unsigned> Send_Data_PTS;
+
 		RuntimeDataManager();
 		virtual ~RuntimeDataManager();
 

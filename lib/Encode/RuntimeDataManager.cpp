@@ -134,6 +134,13 @@ namespace klee {
 			ss << "allDTAMhybridMap:" << DTAMhybridMap[i] << "\n";
 			ss << "allTaintMap:" << TaintAndPTSMap[i] << "\n";
 
+			//add by haoyu 2017.07.03
+			ss << "Send_Data:" << Send_Data[i] << "\n";
+			ss << "Send_Data_Serial:" << Send_Data_Serial[i] << "\n";
+			ss << "Send_Data_Parallel:" << Send_Data_Parallel[i] << "\n";
+			ss << "Send_Data_Hybrid:" << Send_Data_Hybrid[i] << "\n";
+			ss << "Send_Data_PTS:" << Send_Data_PTS[i] << "\n";
+
 		}
 
 		ss << "\n";
