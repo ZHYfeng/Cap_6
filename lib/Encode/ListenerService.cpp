@@ -666,7 +666,7 @@ namespace klee {
 			rdManager.allPTSCost.push_back(cost);
 
 			int size;
-			size = trace->Send_Data_Expr.size;
+			size = trace->Send_Data_Expr.size();
 			rdManager.Send_Data.push_back(size);
 			size = 0;
 			for(std::set<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
