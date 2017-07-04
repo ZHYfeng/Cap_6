@@ -668,16 +668,16 @@ namespace klee {
 			int size;
 			rdManager.Send_Data.push_back(trace->Send_Data.size);
 			size = 0;
-			for(std::set<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
-				for (std::set<std::string>::iterator itt = trace->DTAMSerial.begin(), iee = trace->DTAMSerial.end(); itt != iee; itt++) {
+			for(std::vector<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
+				for (std::vector<std::string>::iterator itt = trace->DTAMSerial.begin(), iee = trace->DTAMSerial.end(); itt != iee; itt++) {
 					if ((*itt) == (*it)) {
 						size++;
 					};
 				}
 			}
 			rdManager.Send_Data_Serial.push_back(size);
-			for(std::set<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
-				for (std::set<std::string>::iterator itt = trace->taintPTS.begin(), iee = trace->taintPTS.end(); itt != iee; itt++) {
+			for(std::vector<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
+				for (std::vector<std::string>::iterator itt = trace->taintPTS.begin(), iee = trace->taintPTS.end(); itt != iee; itt++) {
 					if ((*itt) == (*it)) {
 						size++;
 					};
@@ -686,8 +686,8 @@ namespace klee {
 			rdManager.Send_Data_PTS.push_back(size);
 
 			size = 0;
-			for(std::set<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
-				for (std::set<std::string>::iterator itt = trace->DTAMParallel.begin(), iee = trace->DTAMParallel.end(); itt != iee; itt++) {
+			for(std::vector<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
+				for (std::vector<std::string>::iterator itt = trace->DTAMParallel.begin(), iee = trace->DTAMParallel.end(); itt != iee; itt++) {
 					if ((*itt) == (*it)) {
 						size++;
 					};
@@ -696,8 +696,8 @@ namespace klee {
 			rdManager.Send_Data_Parallel.push_back(size);
 
 			size = 0;
-			for(std::set<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
-				for (std::set<std::string>::iterator itt = trace->DTAMhybrid.begin(), iee = trace->DTAMhybrid.end(); itt != iee; itt++) {
+			for(std::vector<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
+				for (std::vector<std::string>::iterator itt = trace->DTAMhybrid.begin(), iee = trace->DTAMhybrid.end(); itt != iee; itt++) {
 					if ((*itt) == (*it)) {
 						size++;
 					};
