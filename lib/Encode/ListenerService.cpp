@@ -670,11 +670,9 @@ namespace klee {
 			rdManager.Send_Data.push_back(size);
 			size = 0;
 			for(std::set<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
-				for (std::vector<std::string>::iterator itt = trace->DTAMSerial.begin(), iee = trace->DTAMSerial.end(); itt != iee; itt++) {
-					if ((*itt) == (*it)) {
-						size++;
-					};
-				}
+				if (trace->DTAMSerial.find(*it) != trace->DTAMSerial.end()) {
+					size++;
+				};
 			}
 			rdManager.Send_Data_Serial.push_back(size);
 			for(std::set<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
@@ -688,21 +686,17 @@ namespace klee {
 
 			size = 0;
 			for(std::set<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
-				for (std::vector<std::string>::iterator itt = trace->DTAMParallel.begin(), iee = trace->DTAMParallel.end(); itt != iee; itt++) {
-					if ((*itt) == (*it)) {
-						size++;
-					};
-				}
+				if (trace->DTAMParallel.find(*it) != trace->DTAMParallel.end()) {
+					size++;
+				};
 			}
 			rdManager.Send_Data_Parallel.push_back(size);
 
 			size = 0;
 			for(std::set<std::string>::iterator it = trace->Send_Data_Expr.begin(), ie = trace->Send_Data_Expr.end(); it != ie; it++) {
-				for (std::vector<std::string>::iterator itt = trace->DTAMhybrid.begin(), iee = trace->DTAMhybrid.end(); itt != iee; itt++) {
-					if ((*itt) == (*it)) {
-						size++;
-					};
-				}
+				if (trace->DTAMhybrid.find(*it) != trace->DTAMhybrid.end()) {
+					size++;
+				};
 			}
 			rdManager.Send_Data_Hybrid.push_back(size);
 
